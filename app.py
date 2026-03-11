@@ -2,12 +2,58 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Talking Rabbit", layout="wide")
+st.markdown("""
+<style>
 
-st.title("🐰 Talking Rabbit - Conversational Data Analytics")
+.main {
+    background-color: #f4f6fb;
+}
 
-st.write("Upload a CSV and ask questions about your data.")
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 
+h1 {
+    color: #1f2937;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: #4b5563;
+}
+
+.stFileUploader {
+    border: 2px dashed #6366f1;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.stButton>button {
+    background-color: #6366f1;
+    color: white;
+    border-radius: 8px;
+    height: 45px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.stButton>button:hover {
+    background-color: #4f46e5;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+# 🐰 Talking Rabbit
+
+### Conversational Data Analytics
+
+Upload a CSV file and **ask questions about your data instantly**.
+""")
 # Upload CSV
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
@@ -58,5 +104,6 @@ if uploaded_file:
                 st.line_chart(trend)
 
         else:
+
 
             st.warning("I couldn't understand the question. Try asking about revenue, region, or trend.")
